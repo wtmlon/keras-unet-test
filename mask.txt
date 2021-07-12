@@ -1,0 +1,19 @@
+import cv2
+import numpy as np
+
+for pic in range(1, 11):
+    img1=cv2.imread("_{}.jpg".format(pic))
+    hsv = cv2.cvtColor(img1,cv2.COLOR_BGR2HSV)
+
+    #lower red
+    lower_red = np.array([0,50,50])
+    upper_red = np.array([10,255,255])
+
+
+    #upper red
+    lower_red2 = np.array([170,50,50])
+    upper_red2 = np.array([180,255,255])
+
+    mask = cv2.inRange(hsv, lower_red, upper_red)
+    #print(mask)	
+    cv2.imwrite("m_{}.jpg".format(pic), mask)
